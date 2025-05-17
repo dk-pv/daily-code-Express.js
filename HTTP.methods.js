@@ -32,15 +32,8 @@ const APP = EXPRESS()
 
 APP.use(EXPRESS.json())
 
-const users = [
-    { id: 1, name: "Danish", email: "alex@gmail.com" },
-    { id: 2, name: "Amina", email: "amina@example.com" },
-    { id: 3, name: "Rahul", email: "rahul@example.com" },
-    { id: 4, name: "Sneha", email: "sneha@example.com" },
-    { id: 5, name: "John", email: "john@example.com" }
-  ];
+var users = [];
   
-
 APP.get('/' , (request , response) =>{
     return response.send("hello world")
 })
@@ -49,10 +42,44 @@ APP.get('/user' ,(req , res) =>{
 })
 APP.get('/user/:id' ,(req , res) =>{
     const {id} = req.params
-    return res.json(users.find((user) => user.id == id))
+    const user = users.find((user) => user.id == id)
+    if(!user){
+        return res.status(404).send() 
+    }
+    return res.json(user)
 })
-
-
+APP.post('/user' ,(req , res) =>{
+    const {name , email} = req.body;
+    const user = {id: users.length + 1 , name : name , email :email}
+    users.push(user)
+    return res.status(201).json(user) 
+})
+APP.delete('/user/:id' ,(req , res) =>{
+    const {id} = req.params
+    const user = users.find((user) => user.id == id)
+    if(!user){
+        return res.status(404).send() 
+    }
+    users = users.filter((user) => user.id != id)
+    return res.status(204).send()
+})
+APP.patch('/user/:id', (req ,res) =>{
+    const {id} = req.params
+    const user = users.find((user) => user.id == id)
+    if(!user){
+        return res.status(404).send()
+    }
+    const {name , email} = req.body
+    if(name){
+        user.name = name;
+    }
+    if(email){
+        user.email = email
+    }
+    const index = users.findIndex((user) =>  user.id == id)
+    users[index] = user
+    return res.json(user)
+})
 APP.listen(3001 , () =>{
     console.log('server is running')
 })
