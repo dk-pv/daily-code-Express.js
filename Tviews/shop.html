@@ -1,22 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>add product</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #2c3e50;
+    }
+
+    header {
+      background-color: #34495e;
+      padding: 1rem 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav ul li a {
+      color: #ecf0f1;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 3rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #2980b9;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">shop</a></li>
-                <li><a href="/add-product">add product</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Products</h1>
-        <p>list of all products.....</p>
-    </main>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Shop</a></li>
+        <li><a href="/add-product">Add Product</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Products</h1>
+    <p>List of all products will be displayed here...</p>
+  </main>
 </body>
 </html>
